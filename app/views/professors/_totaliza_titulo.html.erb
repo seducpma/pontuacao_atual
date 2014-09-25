@@ -57,7 +57,7 @@ display: none;
         <%= tp1.referencia%>
       </td>
       <td width="10%" align="right">
-        <%= format("%.3f",tp1.pontuacao_titulo) %>
+        <%= format("%.0f",tp1.pontuacao_titulo) %>
       </td>
       <td width="10%" align="center">      
       <% distancia_count = TituloProfessor.qtos_titulos($professor, $data) %>
@@ -91,7 +91,7 @@ display: none;
 <tr>
   <th width="80%" colspan="5" align="left">SUB-TOTAL  (Titulação Anual)</th>
   <th  align="right" colspan="2">
-    <%= format("%.3f",$subtot_um) %>
+    <%= format("%.0f",$subtot_um) %>
   </th>
 </tr>
 </table>
@@ -146,7 +146,7 @@ display: none;
         <%= tp.referencia %>
       </td>
       <td width="10%" align="right">
-        <%= format("%.3f",tp.pontuacao_titulo) %>
+        <%= format("%.0f",tp.pontuacao_titulo) %>
         <% $subtot_perm = $subtot_perm + (tp.pontuacao_titulo).to_f %>
       </td>
       <td width="15%" align="center">
@@ -159,7 +159,7 @@ display: none;
 <tr>
   <th width="80%" colspan="5" align="left">SUB-TOTAL (Titulação Permanente)</th>
   <th align="right" colspan="2">
-    <%= format("%.3f",$subtot_perm) %>
+    <%= format("%.0f",$subtot_perm) %>
   </th>
 </tr>
 <% $subtotal_titulos = $subtot_um + $subtot_cinco + $subtot_perm %>
@@ -167,7 +167,7 @@ display: none;
   <th width="80%" colspan="5" align="left">TOTAL TÍTULOS</th>
 
   <th align="right" colspan="2">
-    <%= format("%.3f",$subtotal_titulos) %>
+    <%= format("%.0f",$subtotal_titulos) %>
   </th>
 </tr>
 </table>

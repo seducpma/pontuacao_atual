@@ -19,7 +19,7 @@ display: none;
       <% end %>
 
       <% if $cont >= 2 then %>
-        <%= format("%.3f",Professor.find($professor).pontuacao_final)  %>
+        <%= format("%.0f",Professor.find($professor).pontuacao_final)  %>
       <%else%>
         <% render :text => 'Indicações sobre procedimento de calculo não foi seguido. Favor entrar em contato com A '%>
       <%end%>

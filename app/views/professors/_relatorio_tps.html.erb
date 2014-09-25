@@ -163,10 +163,10 @@
     <%end%>
     <td align="center"><%= $exibe_pont_trab %></td>
     <%if !($exibe_tot_trab).nil? then %>
-    <td align="right"><%= format("%.3f",$exibe_tot_trab) %></td>
+    <td align="right"><%= format("%.0f",$exibe_tot_trab) %></td>
     <%else%>
     <%$exibe_tot_trab=0%>
-    <td align="right"><%= format("%.3f",0) %></td>
+    <td align="right"><%= format("%.0f",0) %></td>
     <%end%>
 
   </tr>
@@ -183,10 +183,10 @@
     <%end%>
     <td align="center"><%= $exibe_pont_efet %></td>
     <% if !($exibe_tot_efet).nil? then %>
-    <td align="right"><%= format("%.3f",$exibe_tot_efet) %></td>
+    <td align="right"><%= format("%.0f",$exibe_tot_efet) %></td>
     <%else%>
     <%$exibe_tot_efet=0%>
-    <td align="right"><%= format("%.3f",0) %></td>
+    <td align="right"><%= format("%.0f",0) %></td>
     <%end%>
   </tr>
   <tr>
@@ -202,10 +202,10 @@
     <%end%>
     <td align="center"><%= $exibe_pont_rede %></td>
     <%if !($exibe_tot_rede).nil? then %>
-    <td align="right"><%= format("%.3f",$exibe_tot_rede) %></td>
+    <td align="right"><%= format("%.0f",$exibe_tot_rede) %></td>
     <%else%>
     <%$exibe_tot_rede=0%>
-    <td align="right"><%= format("%.3f",0) %></td>
+    <td align="right"><%= format("%.0f",0) %></td>
     <%end%>
 
 
@@ -223,12 +223,12 @@
     <%end%>
     <td align="center"><%= $exibe_pont_unid %></td>
     <%if !($exibe_tot_unid).nil? then%>
-    <td align="right"><%= format("%.3f",$exibe_tot_unid) %></td>
+    <td align="right"><%= format("%.0f",$exibe_tot_unid) %></td>
     <%else%>
     <%$exibe_tot_unid=0%>
-    <td align="right"><%= format("%.3f",0) %></td>
+    <td align="right"><%= format("%.0f",0) %></td>
     <%end%>
-    <% $subtotal_dias = format("%.3f",($exibe_tot_trab + $exibe_tot_efet + $exibe_tot_rede + $exibe_tot_unid).to_f) %>
+    <% $subtotal_dias = format("%.0f",($exibe_tot_trab + $exibe_tot_efet + $exibe_tot_rede + $exibe_tot_unid).to_f) %>
   </tr>
 
 
@@ -237,7 +237,7 @@
     TOTAL TEMPO DE SERVIÇO
     </th>
     <th align="right" width="20%" colspan="2">
-      <%= $subtotal_dias %>
+      <%= format("%.0f",$subtotal_dias) %>
     </th>
   </tr>
 
