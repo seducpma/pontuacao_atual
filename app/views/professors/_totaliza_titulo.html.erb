@@ -68,7 +68,9 @@ display: none;
                 <%distancia = distancia + teste%>
               <%end%>
               <% contador = contador + 1%>
+              <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
               <%= 'Válido Distancia' %>
+
           <%else%>
               <% $subtot_um = $subtot_um + (tp1.pontuacao_titulo).to_f %>
               <%= 'Válido' %>

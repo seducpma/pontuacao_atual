@@ -83,29 +83,9 @@ protected
            #self.dt_titulo = (DTA.strftime("%Y").to_i).to_s + "-06-30"
            self.dt_validade = ((existe_config.strftime("%Y").to_i)).to_s + self.end_period
            #self.dt_validade = "2010"
-           if self.tipo_curso == false
-             somatoria_distancia = valores_a_distancia(self.professor_id, self.ano_letivo)
-             pontuacao_nova = (@titulacao.valor * self.quantidade)
-             if pontuacao_nova > 0.180
-               pontuacao_nova = 0.180
-             end
-             self.soma = pontuacao_nova + somatoria_distancia
-             unless self.soma > 0.180
-               self.pontuacao_titulo = pontuacao_nova
-             else
-               if somatoria_distancia != 0.180
-                 if pontuacao_nova < somatoria_distancia
-                  self.pontuacao_titulo =(0.180 - somatoria_distancia).abs
-                 else
-                  self.pontuacao_titulo = (0.180 - somatoria_distancia).abs
-                 end
-               else
-                 self.pontuacao_titulo = 0
-               end
-             end
-           else
+
              self.pontuacao_titulo = self.quantidade * self.valor
-           end
+
           if (self.dt_titulo.to_s > (existe_config.strftime("%Y").to_s + self.end_period)) or (self.dt_titulo.to_s < (existe_config.strftime("%Y").to_i - 1).to_s + self.begin_period)
              self.status = 0
            else
