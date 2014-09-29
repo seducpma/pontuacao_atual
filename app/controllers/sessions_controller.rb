@@ -17,13 +17,13 @@ class SessionsController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       session[:ip] = request.remote_ip
-      #if session[:ip] == '200.232.60.242' or session[:ip] == '201.77.127.49' # or session[:ip] == '201.92.73.126'
+      if session[:ip] == '200.232.60.242' or session[:ip] == '192.168.0.5' # or session[:ip] == '201.92.73.126'
         redirect_back_or_default(home_path)      
         flash[:notice] = "BEM VINDO AO SISTEMA PONTUA."
-      #else
-       # redirect_to(visaos_path)
-        #flash[:notice] = "O PERIODO DE INSERCAO DE DADOS ENCERRADO"
-     # end
+      else
+        redirect_to(visaos_path)
+        flash[:notice] = "O PERIODO DE INSERCAO DE DADOS ENCERRADO"
+      end
     else
       render :action => 'new'
     end
