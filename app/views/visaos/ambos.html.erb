@@ -11,9 +11,9 @@
                 <%= f.collection_select :sede_id_equals, Unidade.todos, :id, :nome, :include_blank => true%>
             </td>
             <td align="right">
-              <% ambos = ['ADI','Diretor Ed. Básica','Prof. Coordenador','Pedagogo','Prof. de Creche','PEB1 - Ed. Infantil','PEB1 - Ensino Fundamental','PEB2 - Artes','PEB2 - Ed. Física','PEB2 - História','PEB2 - Geografia','PEB2 - Matemática','PEB2 - Português','PEB2 - Inglês','PEB2 - Ciências','PEB - Ed. Especial','TODOS'] %>
-              <%= f.label :funcao_equals, "Função" %>
-              <%= f.select :funcao_equals, options_for_select(ambos.sort!{|t1,t2|t1 <=> t2}), :include_blank => true%>
+              <% ambos = ['ADI / Prof. de Creche','Diretor Ed. Básica','Prof. Coordenador','Pedagogo','PEB1 - Ed. Infantil','PEB1 - Ensino Fundamental','PEB2 - Artes','PEB2 - Ed. Física','PEB2 - História','PEB2 - Geografia','PEB2 - Matemática','PEB2 - Português','PEB2 - Inglês','PEB2 - Ciências','PEB - Ed. Especial', 'PEB - Ed. Especial (Tempo Viver)','TODOS'] %>
+              <%= f.label :funcao2_equals, "Função" %>
+              <%= f.select :funcao2_equals, options_for_select(ambos.sort!{|t1,t2|t1 <=> t2}), :include_blank => true%>
             </td>
             <td align="center" colspan="2">
               <%= f.submit "Buscar" %>
@@ -55,16 +55,15 @@
     <th bgcolor="#cccccc"  width = "5%" >Clas.</th>
     <center><th bgcolor="#cccccc" width = "4%">Matrícula</th></center>
     <th bgcolor="#cccccc" width = "38%">Nome</th>
-    <th bgcolor="#cccccc" width = "25%">Sede</th>
-    <th bgcolor="#cccccc" width = "5%">Pontuação</th>
-    <%if funcao.present?%>
-      <%if funcao == "Geral" %>
-        <th bgcolor="#cccccc"  width = "20%">Função</th>
-      <%else%>
-        <th bgcolor="#cccccc" width = "5%">T. Serviço</th>
-        <th bgcolor="#cccccc" width = "5%">Titulação</th>
-      <%end%>
+    <th bgcolor="#cccccc" width = "20%">Sede</th>
+    <%if funcao == "Geral" or (funcao == "ADI") or (funcao == "Prof. de Creche") %>
+      <th bgcolor="#cccccc"  width = "20%">Função</th>
     <%end%>
+    <th bgcolor="#cccccc" width = "5%">Pontuação</th>
+    <th bgcolor="#cccccc" width = "5%">T. Serviço</th>
+    <th bgcolor="#cccccc" width = "5%">Titulação</th>
+      
+    
 
 
 
@@ -77,17 +76,17 @@
       <td width = "4%"><center><%=h professor.matricula %></center></td>
       <td width = "38%"><center><%=h professor.nome %></center></td>
       <td width = "25%"><center><%=h professor.unidade.nome%></center></td>
-          <% if professor.pontuacao_final.nil? then %>
+      <%if (funcao == "Geral") or (funcao == "ADI") or (funcao == "Prof. de Creche")%>
+        <td width = "20%"><center><%=h professor.funcao%></center></td>
+      <%end%>
+      <% if professor.pontuacao_final.nil? then %>
           <td width="5%"><%=h 0 %></td>
       <%else%>
           <td width = "5%"><center><%=h format("%.0f",professor.pontuacao_final)%></center></td>
       <%end%>
-      <%if funcao == "Geral"%>
-        <td width = "20%"><center><%=h professor.funcao%></center></td>
-      <%else%>
         <td width = "10%"><center><%=h professor.total_trabalhado%></center></td>
         <td width = "10%"><center><%=h professor.total_titulacao%></center></td>
-      <%end%>
+      
 
   </tr>
        <% $contador= $contador+1 %>
