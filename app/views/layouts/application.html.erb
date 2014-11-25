@@ -99,7 +99,7 @@ window.print();
             </ul>
           </li>
          <%end%>
-         <%  if (current_user.has_role?('supervisao')) or (current_user.has_role?('admin'))  or (current_user.has_role?('planejamento'))%>
+         <%  if (current_user.has_role?('supervisao')) or (current_user.has_role?('admin'))  or (current_user.has_role?('planejamento'))or (current_user.has_role?('direcao'))%>
           <li><%= link_to "Remoção", remocaos_path, :class => "fly" %>
             <ul>
               <li><%= link_to 'Solicitar', new_remocao_path, {:title => 'Antes de Cadastrar a remocao de um professor, verifique na listagem ao lado se a mesma ja não esta criada'} %></li>
