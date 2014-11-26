@@ -30,13 +30,15 @@ class RemocaosController < ApplicationController
 
   def index
 
-    @remocaos = Remocao.find(:all,:include => :professor ,:conditions => ["ano_letivo = ? and flag_remocao_finalizada = 0", session[:data]], :order => :created_at)
+   
 
         session[:data] = Time.current.strftime("%Y")
         $data = Time.current.strftime("%Y")
         session[:data2] =  ((session[:data]).to_i - 1)
         $data2 =  ((session[:data]).to_i - 1)
 
+
+    @remocaos = Remocao.find(:all,:include => :professor ,:conditions => ["ano_letivo = ? and flag_remocao_finalizada = 0", session[:data]], :order => :created_at)
 
     respond_to do |format|
       format.html # index.html.erb
