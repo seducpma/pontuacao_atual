@@ -5,7 +5,7 @@
     <th bgcolor="#cccccc">Nome</th>
     <th bgcolor="#cccccc">Status</th>
     <th bgcolor="#cccccc">Ano Letivo</th>
-<% @remocaos = Remocao.find(:all) %>
+
 <% for remocao in @remocaos %>
   <tr>
     <td><%= Professor.find(remocao.professor_id).matricula %> </td>

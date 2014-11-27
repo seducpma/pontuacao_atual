@@ -199,6 +199,7 @@ class RemocaosController < ApplicationController
   end
 
   def lista_remocao
+    @remocaos = Remocao.find(:all,:include => :professor ,:conditions => ["ano_letivo = ?", session[:data]], :order => :created_at)
   end
 
   def ficha_permuta
