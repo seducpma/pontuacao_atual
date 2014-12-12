@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
     @activated = true
     self.activated_at = Time.now.utc
     self.activation_code = nil
+    self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     save(false)
   end
 
